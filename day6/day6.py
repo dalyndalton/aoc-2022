@@ -12,7 +12,7 @@ with open("input.txt") as file:
 
     # Part 2
     i = 14
-    while i := 14 < len(line):
+    while i < len(line):
         section = set(line[i - 14 : i])
         if len(section) == 14:
             print(f"FOUND: {i}")
