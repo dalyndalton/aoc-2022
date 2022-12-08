@@ -15,23 +15,25 @@ with open("input.txt") as file:
     point_scores = []
     for y, row in enumerate(grid):
         for x, tree in enumerate(row):
-            point_scores.append([0, 0, 0, 0])
+            l, r, u, d = (0, 0, 0, 0)
+            
             for j in range(x - 1, -1, -1):
-                point_scores[-1][0] += 1
+                l += 1
                 if grid[y][j] >= tree:
                     break
             for i in range(y - 1, -1, -1):
-                point_scores[-1][1] += 1
+                r += 1
                 if grid[i][x] >= tree:
                     break
             for j in range(x + 1, len(row)):
-                point_scores[-1][2] += 1
+                u += 1
                 if grid[y][j] >= tree:
                     break
             for i in range(y + 1, len(grid)):
-                point_scores[-1][3] += 1
+                d += 1
                 if grid[i][x] >= tree:
                     break
+            point_scores.append([l, r, u, d])
 
     sol = max(prod(score) for score in point_scores)
 
