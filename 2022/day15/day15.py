@@ -23,12 +23,14 @@ with open("input.txt") as file:
 sensors = set()
 beacons = set()
 
-for idx, l in enumerate(lines):
-    sensor, beacon = l
-    taxi_dist = abs(sensor[0] - beacon[0]) + abs(sensor[1] - beacon[1])
+for idx, line in enumerate(lines):
+    sensor, beacon = line
     sx, sy = sensor
+    bx, by = beacon
+    
+    taxi_dist = abs(sx - bx) + abs(sy - by)
     sensors.add((sx, sy, taxi_dist))
-    beacons.add(tuple(beacon))
+    beacons.add((bx, by))
 
 
 p1 = 0
